@@ -1,0 +1,53 @@
+.main{
+    padding: 15px;
+    border: 1px solid rgba(128, 128, 128, 0.253)
+}
+.cart-details{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.cart-img{
+    flex-basis: 20%;
+    max-width: 15%;
+   
+}
+.cart-info{
+    flex-basis: 60%;
+}
+.cart-delivery{
+    flex-basis: 20%;
+}
+.cart-price{
+    margin-top: 30px;
+}
+.cart-description,
+.cart-seller{
+    color: grey;
+}
+.delivery-charge{
+    color:green;
+    font-weight: bolder;
+}
+.inc-btn,
+.dec-btn{
+    border:1px solid rgba(128, 128, 128, 0.253);
+    border-radius: 50%;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.demoInput{
+    width:40px;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: center;
+}
+.cart-save-btn,
+.cart-remove-btn{
+    border:none;
+    background-color: white;
+    margin-left: 30px;
+    font-weight: bolder;
+}

@@ -1,0 +1,15 @@
+.body{
+    display: flex;
+}
+.card-img-div{
+    flex-basis: 40%;
+}
+.card-img{
+    width:100px;
+    border-radius: 50%;
+
+}
+.card-content{
+    flex-basis: 60%;
+    margin-left: 15px;
+}
