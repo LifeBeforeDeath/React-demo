@@ -1,0 +1,94 @@
+@use '../common';
+@use '../vars' as v;
+.teams-page{
+    .teams-info{
+        color:grey;
+        padding:0.5em 0;
+    }
+    .parent-team {
+        @media (max-width:600px){
+            grid-template-columns: 1fr;
+        }
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 3em 2em;
+        margin: 1em 0;
+        .team-list
+        {
+            border: 1px solid lightgray;
+            border-radius: 5px;
+            padding: 0.5em;
+        }
+        .display-team-description{
+            padding-top:0.5em;
+            padding-bottom:0.5em;
+            color:grey
+        }
+        .display-team-name,
+        .display-team-short-name
+        {
+            margin:0.5em 0;
+        }
+        .excuse-yourself{
+            margin:5px 0;
+            padding:7px;
+            background-color: v.$excuse-yourself-btn; 
+            border:none;
+            border-radius: 3px;
+            color:white;
+        }
+        .team-plus{
+        
+            position: relative;
+            top:40%;
+            bottom:40%;
+            .plus{
+                position: relative;
+                left:45%;
+                // right:50%;
+                top:40%;
+                font-size: 3em;
+                border: none;
+                background-color: white;
+                color: black;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+        .team-dropdown{
+            margin:0.5em;
+            select{
+                width:50%;
+                padding:2px;
+            }
+            .team-add-btn{
+                padding:4px 8px;
+                background-color: v.$add-btn-color;
+                border-radius: 3px;
+                border:none;
+                color:white;
+            }
+        }
+        .add-meeting-form{
+            input,textarea{
+                width:90%;
+                margin:0.5em;
+            }
+            .add-meeting-btn
+            {
+                width:95%;
+                margin:5px 0;
+                padding:5px;
+                background-color: v.$add-btn-color;
+                border-radius: 3px;
+                border:none;
+                color:white;
+            }
+        }  
+    }
+    .div-hide{
+        display: none;
+    } 
+    
+}

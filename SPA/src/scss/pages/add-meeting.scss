@@ -1,0 +1,64 @@
+@use '../common';
+@use '../vars' as v;
+@use '../mixin/meet' as mixinBorder;
+.add-meeting-page{
+   
+    .form-body{
+        background-color: v.$form-body-color;
+        padding: 1.5em;
+        border-radius: 5px;
+        textarea,
+        input{
+            display: block;
+            width: 98%;
+            margin: 10px 0 ;
+            padding: 0.5em;
+        }
+
+        .submit{
+            padding:7px 15px;
+            background-color: v.$search-btn-color;
+            border: none;
+            color: white;
+            border-radius: 5px;
+        }
+        h2{
+            color: white;
+        }
+        select{
+            margin:10px 0;
+            padding:0.5em;
+        }
+        .message-error{
+            color:red;
+        }
+    }
+    
+    .types-of-meeting{
+        padding: 0.5em 0;
+        margin:1em 0;
+        border-bottom: 0.5px solid grey;
+        a{
+            text-decoration: none;
+            padding: 0.5em;  
+        }
+        .meet-active{
+            position: relative;
+            top:0px;
+            z-index: 1;
+            @include mixinBorder.border-radius( 5px );
+            // border-top-left-radius: 5px;
+            // border-top-right-radius: 5px;
+            // border-top: 1px solid grey;
+            // border-left: 1px solid grey;
+            // border-right: 1px solid grey;
+            // border-bottom: 1px solid white;
+            color:black;
+        }
+    }
+    
+
+
+}
+
+

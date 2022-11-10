@@ -1,0 +1,33 @@
+@use '../common';
+@use '../vars' as v;
+.login-page{
+    .form-body{
+        background-color: v.$form-body-color;
+        padding: 1.5em;
+        position: relative;
+        top: 100px;
+        border-radius: 5px;
+        input{
+            display: block;
+            width: 98%;
+            margin: 0.5em 0;
+            padding: 0.5em;
+        }
+        .submit{
+            padding:7px 15px;
+            background-color: v.$search-btn-color;
+            border: none;
+            color: white;
+            border-radius: 5px;
+        }
+        .message-error{
+            color:red;
+        }
+        .info{
+            margin-top: 0.5em;
+        }
+        h1{
+            color: white;
+        }
+    }     
+}

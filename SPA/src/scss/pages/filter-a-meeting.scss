@@ -1,0 +1,101 @@
+@use '../common';
+@use '../vars' as v;
+@use '../mixin/meet' as mixinBorder;
+.filter-meeting-page{
+    .form-body{
+        background-color: v.$form-body-color;
+        padding: 1.5em;
+        border-radius: 5px;
+        .search-btn{
+            padding:7px 15px;
+            background-color: v.$search-btn-color;
+            border: none;
+            color: white;
+            border-radius: 5px;
+        }
+        h2{
+            color: white;
+        }
+        textarea,
+        input{
+            display: block;
+            width: 98%;
+            margin: 10px 0 ;
+            padding: 0.5em;
+        }
+        select{
+            margin:10px 0;
+            padding:0.5em;
+            width:100%;
+        }
+    }
+    
+    .types-of-meeting{
+        padding: 0.5em 0;
+        margin:1em 0;
+        border-bottom: 0.5px solid grey;
+        a{
+            text-decoration: none;
+            padding: 0.5em;  
+        }
+        .meet-active{
+            position: relative;
+            top:0px;
+            z-index: 1;
+            @include mixinBorder.border-radius( 5px );
+            // border-top-left-radius: 5px;
+            // border-top-right-radius: 5px;
+            // border-top: 1px solid grey;
+            // border-left: 1px solid grey;
+            // border-right: 1px solid grey;
+            // border-bottom: 1px solid white;
+             color:black;
+        }
+    }
+     
+    
+    // .meeting-matching-search{
+    //     margin-top: 1em;
+    // }
+    /* -----------------------------------------------------------------------------*/
+    .display-meeting{
+        padding:1em;
+        margin-bottom: 5px;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        .display-team-description{
+            padding-top:0.5em;
+            padding-bottom:0.5em;
+            color:grey
+        }
+        .display-team-name,
+        .display-team-short-name
+        {
+            margin:0.5em 0;
+            color:black;
+        }
+        .excuse-yourself{
+            margin:5px 0;
+            padding:7px;
+            background-color: v.$excuse-yourself-btn; 
+            border:none;
+            border-radius: 3px;
+            color:white;
+        }
+        
+        .team-dropdown{
+            margin:0.5em;
+        }
+        .team-dropdown select{
+            padding:2px;
+        }
+        .team-dropdown .team-add-btn{
+            padding:4px 8px;
+            background-color: rgb( 22, 163, 184 );
+            border-radius: 3px;
+            border:none;
+            color:white;
+        }
+    }
+    
+}

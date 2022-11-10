@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Meetings App</title>
+        <link rel="stylesheet" href="css/externel/css/normalize.css">
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <script defer src="dist/js/main.bundle.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <template id="login">
+            <div class="login-page">
+                <main class="container">
+                    <div class="form-body">
+                        <form action="https://mymeetingsapp.herokuapp.com/api/auth/login" method="post" class="form">
+                            <h1>Login</h1>
+                            <hr />
+                            <div class="form-email">
+                                <label for="email">Email</label>
+                                <input 
+                                    type="email" 
+                                    id="email"
+                                    name="email"
+                                    placeholder="joe@example.com"
+                                    required
+                                />
+                            </div>
+                            <div class="form-password">
+                                <label for="password">Password</label>
+                                <input 
+                                    type="password" 
+                                    id="password"
+                                    name="password"
+                                    required
+                                />
+                                <span class="message message-error"></span>
+                            </div>
+                            <button class="submit">Submit</button>
+                            <div class="info">
+                                If you are not Registered,Go <a href="register.html">Register</a> yourself.
+                            </div>
+                        </form>
+                    </div>
+                </main>
+            </div>
+            
+        </template>
+
+        <template id="register">
+            <div class="register-page">
+                <main class="container">
+                    <div class="form-body">
+                        <form action="https://mymeetingsapp.herokuapp.com/api/auth/register" method="post" class="form">
+                            <h1>Register</h1>
+                            <hr /> 
+                            <div class="user-name">
+                                <label for="username">Username</label>
+                                <input 
+                                    type="text"
+                                    id="username"
+                                    placeholder="john"
+                                    name="name"
+                                />
+                                <span class="message message-error"></span>
+                            </div>
+                            <div class="form-email">
+                                <label for="email">Email</label>
+                                <input 
+                                    type="email" 
+                                    id="email"
+                                    name="email"
+                                    placeholder="joe@example.com"
+                                    required
+                                />
+                                <span class="message message-error"></span>
+                            </div>
+                            <div class="form-password">
+                                <label for="password">Password</label>
+                                <input 
+                                    type="password" 
+                                    id="password"
+                                    name="password"
+                                    required
+                                />
+                                <span class="message message-error"></span>
+                            </div>
+                            <div class="form-confirm-password">
+                                <label for="confirm-password">Confirm Password</label>
+                                <input 
+                                    type="password" 
+                                    id="confirm-password"
+                                    name="confirm password"
+                                    required
+                                />
+                                <span class="message message-error"></span>
+                            </div>
+                            <button class="submit">Submit</button>
+                            <div class="info">
+                                If you are already Registered,Go <a href="login.html">Login</a> yourself.
+                            </div>
+                        </form>
+                    </div>
+                </main>
+            </div>
+            
+        </template>
+
+        <template id="calender">
+            <div class="calender-page">
+                <div class="my-meetings hide-my-meetings">
+                    <span class="meeting-title"><strong>MyMeetings</strong></span>
+                    <i class="fa fa-bars">
+                        <ul class="mobile-view list-unstyled left-sidebar">
+                            <li class="list active"><a href="calender.html" >Calender</a></li>
+                            <li class="list"><a href="meetings-Add-a-meeting.html">Meetings</a></li>
+                            <li class="list"><a href="teams.html">Teams</a></li>
+                            <li class="list">Hello <span class="Auth-email">Praveen@example.com</span></li>
+                            <li class="list"><button class="logout">Logout</button></li>
+                        </ul>
+                    </i> 
+                </div>
+                <nav class="navbar">
+                    <div class="left-bar">
+                        <ul class="left-list list-unstyled d-flex left-sidebar">
+                            <li class="list active"><a href="calender.html" >Calender</a></li>
+                            <li class="list"><a href="meetings-Add-a-meeting.html">Meetings</a></li>
+                            <li class="list"><a href="teams.html">Teams</a></li>
+                        </ul>
+                    </div>
+                    <div class="right-bar">
+                        <ul class="right-list list-unstyled d-flex left-sidebar">
+                            <li class="list">Hello <span class="Auth-email">Praveen@example.com</span></li>
+                            <li class="list"><button class="logout">Logout</button></li>
+                        </ul>
+                    </div>
+                                       
+                </nav>
+                <main class="container">
+                    <h1>Calender</h1>
+                    <hr />
+                    <div class="date-format">
+                        <label for="date" hidden>Date</label>
+                        <input 
+                            type="date"
+                            name = "date"
+                            id="date"
+                        />
+                        <h2 class="selected-date"></h2>
+                        <span class="week-day"></span>
+                         
+                    </div>
+                    <section class="meeting-days">
+                        <div class="days-list">
+                            <span class="day same">1</span>
+                            <div class="meeting same">
+                            </div>
+                        </div>
+                        <div class="days-list">
+                            <span class="day same">2</span>
+                            <div class="meeting same"></div>
+                        </div>
+                        <div class="days-list">
+                            <span class="day same">3</span>
+                            <div class="meeting same"></div>
+                        </div>
+                        <div class="days-list">
+                            <span class="day same">4</span>
+                            <div class="meeting same"></div>
+                        </div>
+                        <div class="days-list">
+                            <span class="day same">5</span>
+                            <div class="meeting same"></div>
+                        </div>
+                        <div class="days-list">
+                            <span class="day same">6</span>
+                            <div class="meeting same"></div>
+                        </div>
+                        <div class="days-list">
+                            <span class="day same">7</span>
+                            <div class="meeting same"></div>
+                        </div>
+                        <div class="days-list">
+                            <span class="day same">8</span>
+                            <div class="meeting same"></div>
+                        </div>
+                        <div class="days-list">
+                            <span class="day same">9</span>
+                            <div class="meeting same"></div>
+                        </div>
+                        <div class="days-list">
+                            <span class="day same">10</span>
+                            <div class="meeting same"></div>
+                        </div>
+                        <div class="days-list">
+                            <span class="day same">11</span>
+                            <div class="meeting same"></div>
+                        </div>
+                        <div class="days-list">
+                            <span class="day same">12</span>
+                            <div class="meeting same"></div>
+                        </div>
+                        <div class="days-list">
+                            <span class="day same">13</span>
+                            <div class="meeting same"></div>
+                        </div>
+                        <div class="days-list">
+                            <span class="day same">14</span>
+                            <div class="meeting same"></div>
+                        </div>
+                        <div class="days-list">
+                            <span class="day same">15</span>
+                            <div class="meeting same"></div>
+                        </div>
+                        <div class="days-list">
+                            <span class="day same">16</span>
+                            <div class="meeting same"></div>
+                        </div>
+                        <div class="days-list">
+                            <span class="day same">17</span>
+                            <div class="meeting same"></div>
+                        </div>
+                        <div class="days-list">
+                            <span class="day same">18</span>
+                            <div class="meeting same" ></div>
+                        </div>
+                        <div class="days-list">
+                            <span class="day same">19</span>
+                            <div class="meeting same"></div>
+                        </div>
+                        <div class="days-list">
+                            <span class="day same">20</span>
+                            <div class="meeting same"></div>
+                        </div>
+                        <div class="days-list">
+                            <span class="day same">21</span>
+                            <div class="meeting same"></div>
+                        </div>
+                        <div class="days-list">
+                            <span class="day same">22</span>
+                            <div class="meeting same"></div>
+                        </div>
+                        <div class="days-list">
+                            <span class="day same">23</span>
+                            <div class="meeting same"></div>
+                        </div>
+                        <div class="days-list">
+                            <span class="day same">24</span>
+                            <div class="meeting same"></div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+            
+        </template>
+
+        <template id="addMeeting">
+            <div class="add-meeting-page">
+                <div class="my-meetings hide-my-meetings">
+                    <span><strong>MyMeetings</strong></span>
+                    <i class="fa fa-bars">
+                        <ul class="mobile-view list-unstyled left-sidebar">
+                            <li class="list "><a href="calender.html" >Calender</a></li>
+                            <li class="list active"><a href="meetings-Add-a-meeting.html">Meetings</a></li>
+                            <li class="list"><a href="teams.html">Teams</a></li>
+                            <li class="list">Hello <span class="Auth-email">Praveen@example.com</span></li>
+                            <li class="list"><button class="logout">Logout</button></li>
+                        </ul>
+                    </i>   
+                </div>
+                <nav class="navbar">
+                    <div class="left-bar">
+                        <ul class="left-list list-unstyled d-flex left-sidebar">
+                            <li class="list "><a href="calender.html" >Calender</a></li>
+                            <li class="list active"><a href="meetings-Add-a-meeting.html">Meetings</a></li>
+                            <li class="list"><a href="teams.html">Teams</a></li>
+                        </ul>
+                    </div>
+                    <div class="right-bar">
+                        <ul class="right-list list-unstyled d-flex left-sidebar">
+                            <li class="list">Hello <span class="Auth-email">Praveen@example.com</span></li>
+                            <li class="list"><button class="logout">Logout</button></li>
+                        </ul>
+                    </div>
+                </nav>
+                <main class="container">
+                    <h1>Meetings</h1>
+                    <hr />
+                    <div class="types-of-meeting">
+                        <a href="meetings-filter-a-meeting.html" class="filter-tab">Filter / Search a meeting</a>
+                        <a href="meetings-Add-a-meeting.html" class="add-tab meet-active">Add a meeting</a>
+                    </div>
+                    <div class="form-body">
+                        <form action="https://mymeetingsapp.herokuapp.com/api/meetings" method="post" class="form">
+                            <h2>Add a new meeting</h2>
+                            <hr />
+                            <div class="meeting-name">
+                                <label for="name">Name</label>
+                                <input 
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    required
+                                />
+                            </div>
+                            <div class="meeting-date">
+                                <label for="date">Date</label>
+                                <input 
+                                    type="date"
+                                    id="date"
+                                    name="date"
+                                    required
+                                />
+                                <span class="message message-error"></span>
+                            </div>
+                            <div class="meeting-start-time">
+                                <label for="start-time-hours">Start Time(hh:mm)</label><br />
+                                <select id="start-time-hours" name="hours">
+                                    <option value="00">00</option>
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                </select>
+                                :
+                                <select id="start-time-minutes" name="minutes">
+                                    <option value="00">00</option>
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                    <option value="26">26</option>
+                                    <option value="27">27</option>
+                                    <option value="28">28</option>
+                                    <option value="29">29</option>
+                                    <option value="30">30</option>
+                                    <option value="31">31</option>
+                                    <option value="32">32</option>
+                                    <option value="33">33</option>
+                                    <option value="34">34</option>
+                                    <option value="35">35</option>
+                                    <option value="36">36</option>
+                                    <option value="37">37</option>
+                                    <option value="38">38</option>
+                                    <option value="39">39</option>
+                                    <option value="40">40</option>
+                                    <option value="41">41</option>
+                                    <option value="42">42</option>
+                                    <option value="43">43</option>
+                                    <option value="44">44</option>
+                                    <option value="45">45</option>
+                                    <option value="46">46</option>
+                                    <option value="47">47</option>
+                                    <option value="48">48</option>
+                                    <option value="49">49</option>
+                                    <option value="50">50</option>
+                                    <option value="51">51</option>
+                                    <option value="52">52</option>
+                                    <option value="53">53</option>
+                                    <option value="54">54</option>
+                                    <option value="55">55</option>
+                                    <option value="56">56</option>
+                                    <option value="57">57</option>
+                                    <option value="58">58</option>
+                                    <option value="59">59</option>
+                                    <option value="60">60</option>
+                                </select>
+                            </div>
+                            <div class="meeting-end-time">
+                                <label for="end-time-hours">End Time(hh:mm)</label><br />
+                                <select id="end-time-hours" name="hours">
+                                    <option value="00">00</option>
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                </select>
+                                :
+                                <select id="end-time-minutes" name="minutes">
+                                    <option value="00">00</option>
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                    <option value="26">26</option>
+                                    <option value="27">27</option>
+                                    <option value="28">28</option>
+                                    <option value="29">29</option>
+                                    <option value="30">30</option>
+                                    <option value="31">31</option>
+                                    <option value="32">32</option>
+                                    <option value="33">33</option>
+                                    <option value="34">34</option>
+                                    <option value="35">35</option>
+                                    <option value="36">36</option>
+                                    <option value="37">37</option>
+                                    <option value="38">38</option>
+                                    <option value="39">39</option>
+                                    <option value="40">40</option>
+                                    <option value="41">41</option>
+                                    <option value="42">42</option>
+                                    <option value="43">43</option>
+                                    <option value="44">44</option>
+                                    <option value="45">45</option>
+                                    <option value="46">46</option>
+                                    <option value="47">47</option>
+                                    <option value="48">48</option>
+                                    <option value="49">49</option>
+                                    <option value="50">50</option>
+                                    <option value="51">51</option>
+                                    <option value="52">52</option>
+                                    <option value="53">53</option>
+                                    <option value="54">54</option>
+                                    <option value="55">55</option>
+                                    <option value="56">56</option>
+                                    <option value="57">57</option>
+                                    <option value="58">58</option>
+                                    <option value="59">59</option>
+                                    <option value="60">60</option>
+                                </select><br />
+                                <span class="message message-error"></span>
+                            </div>
+                            <div class="meeting-description">
+                                <label for="description">Description</label>
+                                <textarea name="description" id="description" placeholder="What is agenda of meeting?"></textarea>
+                            </div>
+                            <div class="meeting-email">
+                                <label for="email">EmailIDs of attendees ,or team's short</label>
+                                <input 
+                                    type="text" 
+                                    id="email"
+                                    name="attendees"
+                                    placeholder="joe@example.com,@annual-day"
+                                    required
+                                />
+                            </div>
+                            <button class="submit">Submit</button>
+                            
+                        </form>
+                    </div>
+                </div>
+            </main>
+        </template>
+
+        <template id="filterMeeting">
+            <div class="filter-meeting-page">
+                <div class="my-meetings hide-my-meetings">
+                    <span><strong>MyMeetings</strong></span>
+                    <i class="fa fa-bars">
+                        <ul class="mobile-view list-unstyled left-sidebar">
+                            <li class="list "><a href="calender.html" >Calender</a></li>
+                            <li class="list active"><a href="meetings-Add-a-meeting.html">Meetings</a></li>
+                            <li class="list"><a href="teams.html">Teams</a></li>
+                            <li class="list">Hello <span class="Auth-email">Praveen@example.com</span></li>
+                            <li class="list"><button class="logout">Logout</button></li>
+                        </ul>
+                    </i>  
+                </div>
+                <nav class="navbar">
+                    <div class="left-bar">
+                        <ul class="left-list list-unstyled d-flex left-sidebar">
+                            <li class="list "><a href="calender.html" >Calender</a></li>
+                            <li class="list active"><a href="meetings-Add-a-meeting.html">Meetings</a></li>
+                            <li class="list"><a href="teams.html">Teams</a></li>
+                        </ul>
+                    </div>
+                    <div class="right-bar">
+                        <ul class="right-list list-unstyled d-flex left-sidebar">
+                            <li class="list">Hello <span class="Auth-email">Praveen@example.com</span></li>
+                            <li class="list"><button class="logout">Logout</button></li>
+                        </ul>
+                    </div>
+                </nav>
+                <main class="container">
+                    <h1>Meetings</h1>
+                    <hr />
+                    <div class="types-of-meeting">
+                        <a href="meetings-filter-a-meeting.html" class="filter-tab meet-active">Filter / Search a meeting</a>
+                        <a href="meetings-Add-a-meeting.html" class="add-tab ">Add a meeting</a>
+                    </div>
+                    <div class="form-body">
+                        <form action="https://mymeetingsapp.herokuapp.com/api/meetings" method="post" class="form">
+                            <h2>Search for meetings</h2>
+                            <hr />
+                            <div class="meeting-day">
+                                <label for="start-date">Date</label><br />
+                                <select id="start-date">
+                                    <option value="all">ALL</option>
+                                    <option value="past">PAST</option>
+                                    <option value="present">TODAY</option>
+                                    <option value="future">UPCOMING</option>
+                                </select>
+                            </div>
+                            <div class="meeting-search">
+                                <label for="search">Search for</label>
+                                <textarea id="search" placeholder="Search using words which describe the meeting"></textarea>
+                            </div>
+                            <button class="search-btn">Search</button>
+                        </form>
+                    </div>
+                    <h3>Meetings matching search criteria</h3>
+                    <hr />
+                    <div class="search-list"></div>
+                    
+                    
+                </main>
+             </div>
+            
+        </template>
+
+        <template id="teams">
+            <div class="teams-page">
+                <div class="my-meetings hide-my-meetings">
+                    <span><strong>MyMeetings</strong></span>
+                    <i class="fa fa-bars">
+                        <ul class="mobile-view list-unstyled left-sidebar">
+                            <li class="list "><a href="calender.html" >Calender</a></li>
+                            <li class="list"><a href="meetings-Add-a-meeting.html">Meetings</a></li>
+                            <li class="list active"><a href="teams.html">Teams</a></li>
+                            <li class="list">Hello <span class="Auth-email">Praveen@example.com</span></li>
+                            <li class="list"><button class="logout">Logout</button></li>
+                        </ul>
+                    </i>  
+                </div>
+                <nav class="navbar">
+                    <div class="left-bar">
+                        <ul class="left-list list-unstyled d-flex left-sidebar">
+                            <li class="list "><a href="calender.html" >Calender</a></li>
+                            <li class="list "><a href="meetings-Add-a-meeting.html">Meetings</a></li>
+                            <li class="list active"><a href="teams.html">Teams</a></li>
+                        </ul>
+                    </div>
+                    <div class="right-bar">
+                        <ul class="right-list list-unstyled d-flex left-sidebar">
+                            <li class="list">Hello <span class="Auth-email">Praveen@example.com</span></li>
+                            <li class="list"><button class="logout">Logout</button></li>
+                        </ul>
+                    </div>
+                </nav>
+                <main class="container">
+                    <h1>Teams</h1>
+                    <hr />
+                    <div class="teams-info">
+                        View and edits teams you are part of
+                    </div>
+                    <div class="parent-team">
+                        <div class="team-list">
+                            <div class="team-plus" >
+                                <button class="plus" tabindex="0">+</button>
+                            </div>
+                            <div class="add-meeting-form div-hide ">
+                                <form action="https://mymeetingsapp.herokuapp.com/api/teams" method="post" id="add-team-form">
+                                    <div class="team-name">
+                                        <label for="name" hidden>Name</label>
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            id="name"
+                                            placeholder="Team name"
+                                            required
+                                        />
+                                    </div>
+                                    <div class="team-short-name">
+                                        <label for="shortname" hidden>Short Name</label>
+                                        <input
+                                            type="text"
+                                            name="shortName"
+                                            id="shortname"
+                                            placeholder="Team short name"
+                                            required
+                                        />
+                                        <span class="message message-error"></span>
+                                    </div>
+                                    <div class="team-description">
+                                        <label for="description" hidden>Description</label>
+                                        <textarea 
+                                            name="description"
+                                            id="description"
+                                            placeholder="Provide a description for the team"
+                                            required
+                                        ></textarea>
+                                    </div>
+                                    <hr />
+                                    <p class="team-examp"><strong>Members</strong> : john@example.com, jane@example.com </p>
+                                    <div class="team-dropdown select-form">
+                                        <select class="select-member" id="form-select-member">
+                                            <option value="">Select Member</option>
+                                        </select>
+                                        <button class="team-add-btn">Add</button>
+                                    </div>
+                                    <button class="add-meeting-btn">Add Team</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+            
+        </template>
+
+        <template id="page-not-found">
+            <h1>Page not found</h1>
+            <hr />
+            Try going <a href="/login.html">login</a>
+        </template>
+    </body>
+</html>

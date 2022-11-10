@@ -1,0 +1,73 @@
+@use '../vars' as v;
+nav {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    padding-left: 10%;
+    padding-right: 10%;
+    background-color: v.$navbar-color;
+    .left-sidebar {
+        align-items: center;
+    }
+}
+
+.list.active {
+    background-color: rgba(248,249,250);
+    color:black;
+}
+nav a,
+.my-meetings a
+{
+    text-decoration: none;
+    color:grey;
+    padding :0.25em;
+    margin: 0 0.25em;
+}
+.list{
+    padding: 0 0.2em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+span{
+    color:rgb(29, 196, 252)
+}
+.logout{
+    border:none;
+    background-color: v.$navbar-color;
+    color: grey;
+    
+}
+
+.hide-my-meetings{
+    display: none;
+}
+
+@media (max-width:600px){
+    nav {
+        display: none;
+    }
+    .my-meetings{
+        display: flex;
+        justify-content: space-between;
+        padding:1em;
+        background-color: v.$navbar-color;
+    }
+    .my-meetings .meeting-title{
+        color:black;
+    }
+    .fa{
+        position:relative;
+    }
+    .mobile-view{
+        position:absolute;
+        top:33px;
+        left:-145px;
+        padding: 0.5em;
+        background-color: v.$navbar-color;
+    }
+    .hide-mobile-view {
+        display:none;
+    }
+
+    
+}
